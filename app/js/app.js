@@ -2,27 +2,36 @@
 
 /* App Module */
 
-var phonecatApp = angular.module('phonecatApp', [
+var lolToolsApp = angular.module('lolToolsApp', [
   'ngRoute',
   'phonecatAnimations',
 
   'phonecatControllers',
   'phonecatFilters',
-  'championServices'
+  'championServices',
+  'playersServices',
+  'summonerServices',
+  'gamesServices'
 ]);
 
-phonecatApp.config(['$routeProvider',
+lolToolsApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/phones', {
-        templateUrl: 'partials/phone-list.html',
+      when('/champions', {
+        templateUrl: 'partials/champions-list.html',
         controller: 'PhoneListCtrl'
       }).
       when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html',
+        templateUrl: 'partials/champions-detail.html',
         controller: 'PhoneDetailCtrl'
       }).
+       when('/game-fight', {
+        templateUrl: 'partials/game-fighter.html',
+        controller: 'FightCtrl'
+      }).
       otherwise({
-        redirectTo: '/phones'
+        redirectTo: '/champions'
       });
   }]);
+
+
