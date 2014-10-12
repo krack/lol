@@ -42,7 +42,9 @@ phonecatControllers.controller('FightCtrl', ['$scope', '$q', 'Player', 'Summoner
          });
 
          $q.all(allPromise).then(function(gamesPlayers){
-            alert("ccou");
+            var games = searchCommonsGame(gamesPlayers);
+            $scope.games = games;
+            console.log(games);
          });
 
       };
@@ -63,19 +65,53 @@ phonecatControllers.controller('FightCtrl', ['$scope', '$q', 'Player', 'Summoner
       };
 
       function searchCommonsGame(gamesPlayers){
-        var communsGame = null;
-          angular.forEach(games1, function(game1, index) {
-              angular.forEach(games2, function(game2, index2) {
-                if(communsGame == null && game1.gameId == game2.gameId){
-                  communsGame = {
-                    "player1" : game1,
-                     "player2" : game2
-                    }
-                  }
-              });
+        var commonGameId = getIdCommonsGame(gamesPlayers);
+        return  foundGame(gamesPlayers, commonGameId);
+
+      };
+
+      function getIdCommonsGame(gamesPlayers){
+        var communsGames = gamesIdArray(gamesPlayers[0]);
+
+         angular.forEach(gamesPlayers, function(gamesPlayer, index) {
+          var idGameOther = gamesIdArray(gamesPlayer);
+
+          communsGames = getCommonIds(communsGames, idGameOther);
+       });
+         if(communsGames.length >= 1){
+          return communsGames[0];
+         }else{
+          return null;
+         }
+      };
+      function getCommonIds(ids1, id2){
+        var commonsIds = new Array();
+
+         angular.forEach(ids1, function(id, index) {
+            if(id2.indexOf(id) != -1){
+              commonsIds.push(id);
+            }
+         });
+        return commonsIds;
+      };
+
+      function gamesIdArray(games){
+        var gamesId = new Array();
+         angular.forEach(games, function(game, index) {
+          gamesId.push(game.gameId);
+         });
+         return gamesId;
+
+      };
+      function foundGame(gamesPlayers, commonGameId){
+        var games = new Array();
+        angular.forEach(gamesPlayers, function(gamesPlayer, index) {
+          angular.forEach(gamesPlayer, function(game, index) {
+            if(game.gameId == commonGameId){
+              games.push(game);
+            }
           });
-
-          return communsGame;
-
+        });
+        return games;
       }
 }]);

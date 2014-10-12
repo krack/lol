@@ -1,11 +1,16 @@
-<div >
-  <div >
-    <div>
-      <label for="players">Joueur 1 : </label>
-      <select id="players" ng-Model="playersCompared" ng-options="player for player in players" multiple="multiple">
-      </select>       
-      <input type="button" ng-click="compare();" value="fight" />
 
-    </div>
-  </div>
+<div>
+	<label for="players">Joueur 1 : </label>
+	<select id="players" ng-Model="playersCompared" ng-options="player for player in players" multiple="multiple">
+	</select>       
+	<input type="button" ng-click="compare();" value="fight" />
+</div>
+
+<div>
+	<ul>
+        <li ng-repeat="game in games">
+          
+          <p>{{game.summmerName}}</p>
+        </li>
+    </ul>
 </div>
