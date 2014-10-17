@@ -7,10 +7,13 @@
 </div>
 
 <div>
+	<p ng-show="games.length == 0">aucune game commune</p>
 	<ul>
-        <li ng-repeat="game in games">
-          
-          <p>{{game.summmerName}}</p>
-        </li>
-    </ul>
+		<li ng-repeat="game in games">
+
+			<p>{{game.summmerName}}</p>
+			<game-resume game="game"></game-resume>
+
+	</li>
+</ul>
 </div>

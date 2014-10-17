@@ -11,7 +11,8 @@ var lolToolsApp = angular.module('lolToolsApp', [
   'championServices',
   'playersServices',
   'summonerServices',
-  'gamesServices'
+  'gamesServices', 
+  'gamesDirectives'
 ]);
 
 lolToolsApp.config(['$routeProvider',

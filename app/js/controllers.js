@@ -115,3 +115,4 @@ phonecatControllers.controller('FightCtrl', ['$scope', '$q', 'Player', 'Summoner
         return games;
       }
 }]);
+
