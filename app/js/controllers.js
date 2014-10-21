@@ -32,7 +32,7 @@ phonecatControllers.controller('FightCtrl', ['$scope', '$q', 'Player', 'Summoner
        });
 
       $scope.compare = function(){
-        getCommunGame($scope.playersCompared);     
+        getCommunGame($scope.playersCompared);  
       };
 
       function getCommunGame(players){
@@ -43,8 +43,9 @@ phonecatControllers.controller('FightCtrl', ['$scope', '$q', 'Player', 'Summoner
 
          $q.all(allPromise).then(function(gamesPlayers){
             var games = searchCommonsGame(gamesPlayers);
+
+            computeEfficacity(games);
             $scope.games = games;
-            console.log(games);
          });
 
       };
@@ -113,6 +114,26 @@ phonecatControllers.controller('FightCtrl', ['$scope', '$q', 'Player', 'Summoner
           });
         });
         return games;
+      };
+
+      function computeEfficacity(games){
+        angular.forEach(games, function(game, index) {
+          var stats = game.stats;
+          console.log(stats);
+          var efficacity = 0;
+          //the victory bonus
+          if(stats.win){
+            efficacity+=50;
+          }
+          //kill bonus
+          efficacity += stats.championsKilled *3 + stats.assists;
+          //kill malus
+          efficacity -= stats.numDeaths *2;
+          //turet bonus
+          efficacity += stats.turretsKilled *5;
+
+          game.efficacity= efficacity;
+        }); 
       }
 }]);
 

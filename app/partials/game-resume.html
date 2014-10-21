@@ -1,47 +1,37 @@
-<div>
-	<img ng-src="http://lkimg.zamimg.com/shared/riot/images/champions/{{game.championId}}.png" />
+<div class="game-resume">
+	<img class="champion" ng-src="http://lkimg.zamimg.com/shared/riot/images/champions/{{game.championId}}.png" />
 
 	<div>
-		<span ng-show="game.stats.win" class="">Victoire</span>
-		<span ng-show="!game.stats.win" class="">Défaite</span>
-		<table>
-			<tbody>
+		<span ng-show="game.stats.win" class="win">Victoire</span>
+		<span ng-show="!game.stats.win" class="defeat">Défaite</span>
+		<span>{{ game.createDate | date:'short'}}</span>
+		<span>{{ game.gameMode}}</span>
+	</div>
 
-				<td>Howling Abyss</td>
-			</tr>
-			<tr>
-				<td><span style="font: inherit; border-bottom: 1px dotted rgba(200, 200, 200, 0.5);" data-hoverswitch-timestamp="1413016936" data-hoverswitch="10/11/2014 10:42AM" data-hoverswitchorig="2 days ago">2 days ago</span></td>
-			</tr>
-			<tr>
-				<td>25 Minutes</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+	<div class="stat">
+		<span>{{game.stats.championsKilled}} kills</span>
+		<span>{{game.stats.numDeaths}} morts</span>
+		<span>{{game.stats.assists}} assists</span>
+	</div>
 
-<div>
-	<span>{{game.stats.championsKilled}} kills</span>
-	<span>{{game.stats.numDeaths}} morts</span>
-	<span>{{game.stats.assists}} assists</span>
-</div>
+	<div>
+		<span>{{game.stats.goldEarned}} gold</span>
+		<span>{{game.stats.minionsKilled}} creeps</span>
+	</div>
 
-<div>
-	<span>{{game.stats.goldEarned}} gold</span>
-	<span>{{game.stats.minionsKilled}} creeps</span>
-</div>
+	<div class="spell">
+		<img ng-src="http://lkimg.zamimg.com/images/spells/{{game.spell1}}.png" />
+		<img ng-src="http://lkimg.zamimg.com/images/spells/{{game.spell2}}.png" />
+	</div>
 
-<div class="match-details-spells">
-	<img ng-src="http://lkimg.zamimg.com/images/spells/{{game.spell1}}.png" />
-	<img ng-src="http://lkimg.zamimg.com/images/spells/{{game.spell2}}.png" />
-</div>
-
-<div class="match-details-items">
-
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item0}}_32.png" />
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item1}}_32.png" />
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item2}}_32.png" />
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item3}}_32.png" />
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item4}}_32.png" />
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item5}}_32.png" />
-	<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item6}}_32.png" />
+	<div class="items">
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item0}}_32.png" />
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item1}}_32.png" />
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item2}}_32.png" />
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item3}}_32.png" />
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item4}}_32.png" />
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item5}}_32.png" />
+		<img ng-src="http:////lkimg.zamimg.com/shared/riot/images/items/{{game.stats.item6}}_32.png" />
+	</div>
+	<div class="efficacity">{{game.efficacity}}</div>
 </div>
